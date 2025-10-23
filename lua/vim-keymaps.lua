@@ -1,4 +1,6 @@
-local opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = false }
+-- noremap for not reference keymap
+-- silent for not display command name at bottom
 local term_opts = { silent = true }
 
 -- Shorten function name
@@ -38,7 +40,7 @@ keymap("n", "<leader>nh", ":nohl<CR>", { noremap = true, silent = true, desc = "
 keymap("n", "<leader>+", "<C-a>", { noremap = true, silent = true, desc = "Increase number" })
 keymap("n", "<leader>-", "<C-x>", { noremap = true, silent = true, desc = "decrease number" })
 
---swindow management
+--window management
 keymap("n", "<leader>sv", "<C-w>v", { noremap = true, silent = true, desc = "Split vertical window" }) -- split window vertical
 keymap("n", "<leader>sh", "<C-w>s", { noremap = true, silent = true, desc = "Split vertical horizontal" }) -- split window horizontal
 keymap("n", "<leader>se", "<C-w>=", { noremap = true, silent = true, desc = "Make split windowns equal" }) -- make split equal size

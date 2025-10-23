@@ -1,5 +1,5 @@
 return {
-  "folke/which-key.nvim",
+  "folke/which-key.nvim", -- Tool for show description popup for every keymaps.
   event = "VeryLazy",
   init = function()
     vim.o.timeout = true

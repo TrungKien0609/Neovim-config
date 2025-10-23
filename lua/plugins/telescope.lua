@@ -9,6 +9,10 @@ return {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.8",
 		dependencies = {
+      {
+      "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+      },
 			"nvim-lua/plenary.nvim",
 			{
 				"nvim-telescope/telescope-fzf-native.nvim", -- support performance tool for searching
@@ -17,6 +21,7 @@ return {
 			"folke/todo-comments.nvim",
 		}, -- Useful lua functions used ny lots of plugins
 		config = function()
+      require("telescope").load_extension("fzf")
 			local actions = require("telescope.actions")
 			local telescope = require("telescope")
 

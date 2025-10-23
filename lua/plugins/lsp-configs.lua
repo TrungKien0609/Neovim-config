@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "volar", "eslint", "prismals" },
+        ensure_installed = { "lua_ls", "ts_ls", "vue_ls", "vtsls", "eslint", "prismals" },
       })
     end,
   },
@@ -26,15 +26,17 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
 
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
+      vim.lsp.config("lua_ls", {
+        capabilities = capabilities
       })
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities,
+      vim.lsp.config("ts_ls", {
+        capabilities = capabilities
       })
-      lspconfig.volar.setup({
+      vim.lsp.config("vtsls", {
+        capabilities = capabilities
+      })
+      vim.lsp.config("vue_ls", {
         filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
         init_options = {
           vue = {
@@ -43,9 +45,15 @@ return {
         },
         capabilities = capabilities,
       })
-      lspconfig.prismals.setup({
-        capabilities = capabilities,
+      vim.lsp.config("prismals", {
+        capabilities = capabilities
       })
+      
+      vim.lsp.enable("lua_ls")
+      vim.lsp.enable("ts_ls")
+      vim.lsp.enable("vue_ls")
+      vim.lsp.enable("vtsls")
+      vim.lsp.enable("prismals")
 
       local keymap = vim.keymap -- for conciseness
 
